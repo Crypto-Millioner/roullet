@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Wheel Casino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-dice"></i>
+                <span>Fortune Wheel</span>
+            </div>
+            <div class="balance-container">
+                <div class="balance" id="balanceBtn">
+                    <i class="fas fa-coins"></i>
+                    <span id="balanceAmount">100 ₽</span>
+                </div>
+                <button class="btn btn-deposit" id="depositBtn">
+                    <i class="fas fa-wallet"></i>
+                    Пополнить
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <div class="wheel-container">
+                <div class="wheel-wrapper">
+                    <div class="wheel-pointer"></div>
+                    <div class="wheel" id="wheel"></div>
+                </div>
+                <button class="btn spin-btn" id="spinBtn">
+                    <i class="fas fa-sync-alt"></i>
+                    Крутить за 10 ₽
+                </button>
+            </div>
+
+<button class="btn push-btn" id="bonusBtn">
+  <i class="fas fa-gift"></i> Получить бонус
+</button>
+
+            <div class="wins-container">
+                <h2 class="wins-title">
+                    <i class="fas fa-trophy"></i>
+                    Последние выигрыши
+                </h2>
+                <table class="wins-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Имя</th>
+                            <th>Выигрыш</th>
+                        </tr>
+                    </thead>
+                    <tbody id="winsTableBody">
+                        <!-- Filled by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Withdraw Modal -->
+    <div class="modal" id="withdrawModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Вывод средств</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="withdrawAmount">Сумма вывода (₽)</label>
+                    <input type="number" id="withdrawAmount" class="form-control" placeholder="Минимум 5000 ₽">
+                    <p class="info-text">Минимальная сумма вывода: 5,000 ₽</p>
+                </div>
+                
+                <h4 style="margin: 20px 0 10px;">Способ вывода:</h4>
+                <div class="payment-methods">
+                    <div class="payment-method" data-method="card">
+                        <i class="fas fa-credit-card"></i>
+                        Банковская карта
+                    </div>
+                    <div class="payment-method" data-method="payeer">
+                        <i class="fas fa-wallet"></i>
+                        Payeer
+                    </div>
+                    <div class="payment-method" data-method="webmoney">
+                        <i class="fas fa-wallet"></i>
+                        WebMoney
+                    </div>
+                    <div class="payment-method" data-method="yoomoney">
+                        <i class="fas fa-wallet"></i>
+                        ЮMoney
+                    </div>
+                </div>
+                
+                <div class="payment-details" id="paymentDetails" style="display: none;">
+                    <!-- Payment details will be shown here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="confirmWithdraw">Подтвердить вывод</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div class="modal" id="depositModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Пополнение баланса</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p class="info-text">Минимальная сумма пополнения: 100 ₽</p>
+                </div>
+                
+                <h4 style="margin: 20px 0 10px;">Способ пополнения:</h4>
+                <div class="payment-methods">
+                    <div class="payment-method" data-method="payeer">
+                        <i class="fas fa-wallet"></i>
+                        Payeer
+                    </div>
+                    <div class="payment-method" data-method="yoomoney">
+                        <i class="fas fa-wallet"></i>
+                        ЮMoney
+                    </div>
+                </div>
+                
+                <div class="payment-details" id="depositDetails">
+                    <p>После выбора способа пополнения здесь появятся реквизиты</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-deposit" id="confirmDeposit">Пополнить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+     <script src="script.js"></script>
+</body>
+</html>
